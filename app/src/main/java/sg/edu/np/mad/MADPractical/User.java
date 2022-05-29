@@ -7,9 +7,7 @@ public class User {
     String Description;
     int Id;
     boolean Followed;
-    ArrayList<User> userList;
-
-    public ArrayList<User> getUserList(){return userList;}
+    static ArrayList<User> userList  = new ArrayList<>();
 
     public User(){
 

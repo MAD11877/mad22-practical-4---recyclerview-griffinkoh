@@ -19,7 +19,7 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        ArrayList<User> userList = new ArrayList<>();
+
         for (int i = 0; i < 20; i++) {
             Random num = new Random();
             int name = num.nextInt();
@@ -27,11 +27,11 @@ public class ListActivity extends AppCompatActivity {
             int follow = (Math.random() <= 0.5) ? 0 : 1;
             Boolean followed = (follow == 0) ? true : false;
             User newUser = new User("Name" + Integer.toString(name), "Description " + Integer.toString(des), i, followed);
-            userList.add(newUser);
+            User.userList.add(newUser);
         }
 
         RecyclerView rv = findViewById(R.id.recyclerView);
-        ListActivityAdapter adapter = new ListActivityAdapter(userList);
+        ListActivityAdapter adapter = new ListActivityAdapter(User.userList);
         LinearLayoutManager layout = new LinearLayoutManager(this);
 
         rv.setLayoutManager(layout);

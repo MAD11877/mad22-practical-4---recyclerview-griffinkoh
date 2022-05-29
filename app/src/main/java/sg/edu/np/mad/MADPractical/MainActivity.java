@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         name.setText(userProfile.Name);
         description.setText(userProfile.Description);
-        followStatus.setText((followed == true) ? "Followed" : "Unfollow");
+        followStatus.setText((User.userList.get(userProfile.Id).Followed == true) ? "Follow" : "unfollow");
 
 
         Button follow = findViewById(R.id.followButton);
@@ -56,14 +56,16 @@ public class MainActivity extends AppCompatActivity {
         follow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (userProfile.Followed == true){
-                    follow.setText("Unfollowed");
+                if (follow.getText() == "Follow"){
+                    User.userList.get(userProfile.Id).Followed = false;
                     userProfile.Followed = false;
+                    follow.setText("Unfollow");
                     Toast.makeText(MainActivity.this, "Followed", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    follow.setText("Followed");
                     userProfile.Followed = true;
+                    User.userList.get(userProfile.Id).Followed = true;
+                    follow.setText("Follow");
                     Toast.makeText(MainActivity.this, "Unfollowed", Toast.LENGTH_SHORT).show();
                 }
             }
